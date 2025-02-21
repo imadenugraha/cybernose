@@ -2,6 +2,7 @@ import argparse
 import time
 from database.models import initialize_database
 from ml.analyzer import NetworkTrafficAnalyzer
+from ml.external_integration import ExternalMLIntegration
 from packet_processing.capture import PacketCaptureManager
 from utils.logging_utils import get_logger
 from config import DB_CONFIG, ML_CONFIG, CAPTURE_CONFIG, LOG_CONFIG
@@ -13,7 +14,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description='Network Traffic Analyzer with ML')
     
     parser.add_argument('--interface', type=str, help='Network interface to capture from')
-    parser.add_argument('--ml-type', choices=['internal'],
+    parser.add_argument('--ml-type', choices=['internal', 'external', 'hybrid'],
                         default='internal', help='Type of ML analysis to use')
     parser.add_argument('--filter', type=str, help='BPF filter for packet capture')
     
@@ -38,6 +39,8 @@ def main():
     
     if args.ml_type == 'internal':
         analyzer = NetworkTrafficAnalyzer(ML_CONFIG['internal'])
+    elif args.ml_type == 'external':
+        analyzer = ExternalMLIntegration(ML_CONFIG['external'])
     else:  # hybrid - implementasi untuk mengombinasikan hasil internal dan eksternal
         # Implementasi hybrid bisa dibuat sebagai wrapper kedua analyzer
         pass
