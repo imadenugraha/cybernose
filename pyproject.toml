@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-python-dotenv = "^1.0.1"
+python-dotenv = "^1.1.15"
 pony = "^0.7.19"
 scapy = "^2.6.1"
 numpy = "^2.2.3"
