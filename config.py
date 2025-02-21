@@ -24,12 +24,6 @@ ML_CONFIG = {
         'buffer_size': getenv("BUFFER_SIZE"),
         'suspicious_threshold': getenv("SUSPICIOUS_THRESHOLD"),
     },
-    'external': {
-        'api_endpoint': getenv("API_ENDPOINT"),
-        'api_key': getenv("API_KEY"),
-        'batch_size': getenv("BATCH_SIZE"),
-        'timeout_seconds': getenv("TIMEOUT_SECONDS")
-    }
 }
 
 # # Common service ports to exclude
