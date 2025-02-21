@@ -9,26 +9,26 @@ load_dotenv()
 
 # Database Configuration
 DB_CONFIG = {
-    'provider': getenv("DB_PROVIDER", "postgresql"),
-    'user': getenv("DB_USER", "postgres"),
-    'password': getenv("DB_PASSWORD", "postgres"),
-    'host': getenv("DB_HOST", "localhost"),
-    'port': getenv("DB_PORT", "5432"),
-    'database': getenv("DB_DATABASE", "network_analyzer")
+    'provider': getenv("DB_PROVIDER"),
+    'user': getenv("DB_USER"),
+    'password': getenv("DB_PASSWORD"),
+    'host': getenv("DB_HOST"),
+    'port': getenv("DB_PORT"),
+    'database': getenv("DB_DATABASE")
 }
 
 # Machine Learning Configuration
 ML_CONFIG = {
     'internal': {
-        'n_clusters': getenv("N_CLUSTERS", 5),
-        'buffer_size': getenv("BUFFER_SIZE", 1000),
-        'suspicious_threshold': getenv("SUSPICIOUS_THRESHOLD", 1.5),
+        'n_clusters': getenv("N_CLUSTERS"),
+        'buffer_size': getenv("BUFFER_SIZE"),
+        'suspicious_threshold': getenv("SUSPICIOUS_THRESHOLD"),
     },
     'external': {
-        'api_endpoint': getenv("API_ENDPOINT", "http://localhost:5000/api/v1/analyze"),
-        'api_key': getenv("API_KEY", "secret"),
-        'batch_size': getenv("BATCH_SIZE", 100),
-        'timeout_seconds': getenv("TIMEOUT_SECONDS", 10)
+        'api_endpoint': getenv("API_ENDPOINT"),
+        'api_key': getenv("API_KEY"),
+        'batch_size': getenv("BATCH_SIZE"),
+        'timeout_seconds': getenv("TIMEOUT_SECONDS")
     }
 }
 
@@ -49,8 +49,8 @@ CAPTURE_CONFIG = {
 
 # Logging Configuration
 LOG_CONFIG = {
-    'log_level': getenv("LOG_LEVEL", "INFO"),
-    'log_file': getenv("LOG_FILE", "network_analyzer.log"),
-    'rotate_logs': getenv("ROTATE_LOGS", True),
-    'max_log_size_mb': getenv("MAX_LOG_IN_MB", 10),
+    'log_level': getenv("LOG_LEVEL"),
+    'log_file': getenv("LOG_FILE"),
+    'rotate_logs': getenv("ROTATE_LOGS"),
+    'max_log_size_mb': getenv("MAX_LOG_IN_MB"),
 }
