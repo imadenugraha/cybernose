@@ -9,11 +9,11 @@ readme = "README.md"
 python = "^3.10"
 python-dotenv = "^1.0.1"
 pony = "^0.7.19"
-psycopg2 = "^2.9.10"
 scapy = "^2.6.1"
 numpy = "^2.2.3"
 scikit-learn = "^1.6.1"
 requests = "^2.32.3"
+psycopg2-binary = "^2.9.10"
 
 
 [build-system]
