@@ -33,11 +33,11 @@ ML_CONFIG = {
 }
 
 # Common service ports to exclude
-SAFE_PORTS = [getenv("SAFE_PORTS")]
+EXCLUDE_PORTS = [getenv("EXCLUDE_PORTS")]
 
 SERVICE_FILTER = ' and '.join([
     f'not (src port {port} or dst port {port})' 
-    for port in SAFE_PORTS
+    for port in EXCLUDE_PORTS
 ])
 
 # Packet Capture Configuration
