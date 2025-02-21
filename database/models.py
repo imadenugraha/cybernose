@@ -19,7 +19,7 @@ class PacketData(db.Entity):
     analyzer_type = Required(str)
     anomaly_score = Required(float)
     cluster = Required(int)
-    is_suspicous = Required(bool)
+    is_suspicious = Required(bool)
     
     ml_model_version = Required(str)
     analysis_duration_ms = Optional(float)
