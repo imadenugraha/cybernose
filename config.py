@@ -13,22 +13,22 @@ DB_CONFIG = {
     'user': getenv("DB_USERNAME"),
     'password': getenv("DB_PASSWORD"),
     'host': getenv("DB_HOST"),
-    'port': getenv("DB_PORT"),
+    'port': int(getenv("DB_PORT")),
     'database': getenv("DB_NAME")
 }
 
 # Machine Learning Configuration
 ML_CONFIG = {
     'internal': {
-        'n_clusters': getenv("N_CLUSTERS"),
-        'buffer_size': getenv("BUFFER_SIZE"),
-        'suspicious_threshold': getenv("SUSPICIOUS_THRESHOLD"),
+        'n_clusters': int(getenv("N_CLUSTERS")),
+        'buffer_size': int(getenv("BUFFER_SIZE")),
+        'suspicious_threshold': float(getenv("SUSPICIOUS_THRESHOLD")),
     },
     'external': {
         'api_endpoint': getenv("API_ENDPOINT"),
         'api_key': getenv("API_KEY"),
-        'batch_size': getenv("BATCH_SIZE"),
-        'timeout_seconds': getenv("TIMEOUT_SECONDS")
+        'batch_size': int(getenv("BATCH_SIZE")),
+        'timeout_seconds': int(getenv("TIMEOUT_SECONDS"))
     }
 }
 
@@ -52,5 +52,5 @@ LOG_CONFIG = {
     'log_level': getenv("LOG_LEVEL"),
     'log_file': getenv("LOG_FILE"),
     'rotate_logs': getenv("ROTATE_LOGS"),
-    'max_log_size_mb': getenv("MAX_LOG_IN_MB"),
+    'max_log_size_mb': int(getenv("MAX_LOG_IN_MB")),
 }
