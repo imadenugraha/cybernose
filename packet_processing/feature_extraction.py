@@ -61,28 +61,3 @@ def prepare_ml_features(features_dict):
         features_dict.get('window_size', 0)
     ]
     return ml_features
-
-def prepare_ml_features_for_external(features_dict):
-    """
-    Menyiapkan fitur dalam format yang siap untuk API ML eksternal
-    
-    Args:
-        features_dict (dict): Fitur paket mentah
-        
-    Returns:
-        dict: Fitur dalam format JSON yang siap dikirim ke API eksternal
-    """
-    return {
-        'packet_size': features_dict.get('packet_size', 0),
-        'ttl': features_dict.get('ttl', 0),
-        'src_port': features_dict.get('src_port', 0),
-        'dst_port': features_dict.get('dst_port', 0),
-        'window_size': features_dict.get('window_size', 0),
-        'protocol': features_dict.get('protocol', 0),
-        'flags_fin': '0' in str(features_dict.get('flags', '')),
-        'flags_syn': '2' in str(features_dict.get('flags', '')),
-        'flags_rst': '4' in str(features_dict.get('flags', '')),
-        'flags_psh': '8' in str(features_dict.get('flags', '')),
-        'flags_ack': '16' in str(features_dict.get('flags', '')),
-        'flags_urg': '32' in str(features_dict.get('flags', ''))
-    }
