@@ -50,7 +50,7 @@ def store_packet_analysis(packet_features, ml_results):
             analyzer_type = ml_results.get('analyzer_type', 'internal'),
             anomaly_score = ml_results['anomaly_score'],
             cluster = ml_results['cluster'],
-            is_suspicous = ml_results['is_suspicous'],
+            is_suspicious = ml_results['is_suspicious'],
             ml_model_version = ml_results.get('model_version', '1.0'),
             analysis_duration_ms = ml_results.get('analysis_duration_ms', 0)
         )
