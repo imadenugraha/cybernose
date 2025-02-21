@@ -36,7 +36,7 @@ poetry install
 ## Usage
 Start the analyzer with default settings:
 ```bash
-poetry run python main.py
+poetry run python3 main.py 
 ```
 
 Available command line options:
