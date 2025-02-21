@@ -17,7 +17,7 @@ class PacketData(db.Entity):
     window_size = Optional(int)
     
     analyzer_type = Required(str)
-    anomaly_type = Required(float)
+    anomaly_score = Required(float)
     cluster = Required(int)
     is_suspicous = Required(bool)
     
