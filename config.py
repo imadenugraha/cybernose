@@ -32,18 +32,18 @@ ML_CONFIG = {
     }
 }
 
-# Common service ports to exclude
-EXCLUDE_PORTS = [getenv("EXCLUDE_PORTS")]
+# # Common service ports to exclude
+# EXCLUDE_PORTS = [getenv("EXCLUDE_PORTS")]
 
-SERVICE_FILTER = ' and '.join([
-    f'not (src port {port} or dst port {port})' 
-    for port in EXCLUDE_PORTS
-])
+# SERVICE_FILTER = ' and '.join([
+#     f'not (src port {port} or dst port {port})' 
+#     for port in EXCLUDE_PORTS
+# ])
 
 # Packet Capture Configuration
 CAPTURE_CONFIG = {
     'interface': None,  # None for default interface
-    'filter': f'ip and {SERVICE_FILTER}',    # BPF filter string
+    'filter': 'ip',    # BPF filter string
     'packet_count': 0   # 0 for infinite capture
 }
 
