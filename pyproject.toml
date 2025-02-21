@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "cybernose"
+version = "0.1.0"
+description = ""
+authors = ["imadenugraha <imadenugraha@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+python-dotenv = "^1.0.1"
+pony = "^0.7.19"
+psycopg2 = "^2.9.10"
+scapy = "^2.6.1"
+numpy = "^2.2.3"
+scikit-learn = "^1.6.1"
+requests = "^2.32.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
