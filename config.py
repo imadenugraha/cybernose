@@ -2,43 +2,55 @@
 """
 Modul konfigurasi global untuk Network Traffic Analyzer
 """
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Database Configuration
 DB_CONFIG = {
-    'provider': 'postgres',
-    'user': 'postgres',
-    'password': 'postgres',
-    'host': 'localhost',
-    'port': 5435,
-    'database': 'network_traffic'
+    'provider': getenv("DB_PROVIDER", "postgresql"),
+    'user': getenv("DB_USER", "postgres"),
+    'password': getenv("DB_PASSWORD", "postgres"),
+    'host': getenv("DB_HOST", "localhost"),
+    'port': getenv("DB_PORT", "5432"),
+    'database': getenv("DB_DATABASE", "network_analyzer")
 }
 
 # Machine Learning Configuration
 ML_CONFIG = {
     'internal': {
-        'n_clusters': 5,
-        'buffer_size': 1000,
-        'suspicious_threshold': 1.5
+        'n_clusters': getenv("N_CLUSTERS", 5),
+        'buffer_size': getenv("BUFFER_SIZE", 1000),
+        'suspicious_threshold': getenv("SUSPICIOUS_THRESHOLD", 1.5),
     },
     'external': {
-        'api_endpoint': 'http://ml-service:5000/predict',
-        'api_key': 'your_api_key_here',
-        'batch_size': 100,
-        'timeout_seconds': 10
+        'api_endpoint': getenv("API_ENDPOINT", "http://localhost:5000/api/v1/analyze"),
+        'api_key': getenv("API_KEY", "secret"),
+        'batch_size': getenv("BATCH_SIZE", 100),
+        'timeout_seconds': getenv("TIMEOUT_SECONDS", 10)
     }
 }
+
+# Common service ports to exclude
+SAFE_PORTS = [getenv("SAFE_PORTS")]
+
+SERVICE_FILTER = ' and '.join([
+    f'not (src port {port} or dst port {port})' 
+    for port in SAFE_PORTS
+])
 
 # Packet Capture Configuration
 CAPTURE_CONFIG = {
     'interface': None,  # None for default interface
-    'filter': 'ip',     # BPF filter string
+    'filter': f'ip and ({SERVICE_FILTER})',    # BPF filter string
     'packet_count': 0   # 0 for infinite capture
 }
 
 # Logging Configuration
 LOG_CONFIG = {
-    'log_level': 'INFO',
-    'log_file': 'network_analyzer.log',
-    'rotate_logs': True,
-    'max_log_size_mb': 10
+    'log_level': getenv("LOG_LEVEL", "INFO"),
+    'log_file': getenv("LOG_FILE", "network_analyzer.log"),
+    'rotate_logs': getenv("ROTATE_LOGS", True),
+    'max_log_size_mb': getenv("MAX_LOG_IN_MB", 10),
 }
