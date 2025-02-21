@@ -43,7 +43,7 @@ SERVICE_FILTER = ' and '.join([
 # Packet Capture Configuration
 CAPTURE_CONFIG = {
     'interface': None,  # None for default interface
-    'filter': f'ip and ({SERVICE_FILTER})',    # BPF filter string
+    'filter': f'ip and {SERVICE_FILTER}',    # BPF filter string
     'packet_count': 0   # 0 for infinite capture
 }
 
